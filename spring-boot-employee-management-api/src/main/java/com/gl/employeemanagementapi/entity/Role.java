@@ -8,13 +8,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Getter
+@Setter
 @Table(name = "roles")
 public class Role {
 	@Id
@@ -24,20 +28,4 @@ public class Role {
 
 	@Column(name = "name")
 	private String roleName;
-
-	public long getRoleId() {
-		return roleId;
-	}
-
-	public void setRoleId(long roleId) {
-		this.roleId = roleId;
-	}
-
-	public String getRoleName() {
-		return roleName;
-	}
-
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
-	}
 }

@@ -52,9 +52,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/api/user", "/api/role").hasAuthority("ADMIN")
-				.antMatchers(HttpMethod.POST, "/api/employees").hasAnyAuthority("ADMIN")
-				.antMatchers(HttpMethod.PUT, "/api/employees").hasAuthority("ADMIN")
-				.antMatchers(HttpMethod.DELETE, "/api/employees/*").hasAuthority("ADMIN")
+				.antMatchers(HttpMethod.POST, "/api/employees").hasAuthority("ADMIN")
+				.antMatchers(HttpMethod.PUT, "/api/employees").hasAnyAuthority("ADMIN", "USER")
+				.antMatchers(HttpMethod.DELETE, "/api/employees/*").hasAnyAuthority("ADMIN", "USER")
 				.antMatchers(HttpMethod.GET, "/api/employees/*").hasAnyAuthority("ADMIN", "USER").anyRequest()
 				.authenticated().and().exceptionHandling().accessDeniedHandler(accessDeniedHandler()).and().httpBasic()
 				.and().httpBasic().and().cors().and().csrf().disable();
